@@ -1,7 +1,8 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Home from './Pages/Home.jsx'
-import Flights from './Pages/Flights.jsx'
+import Home from './Pages/Home.jsx';
+
+import Flights from './Pages/Flights/Flights.jsx';
 import Bus from './Pages/Bus.jsx'
 import Stay from './Pages/Stay.jsx'
 import Train from './Pages/Train.jsx'

@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
   return (
 
-    <div className=' flex  pt-2  shadow-black drop-shadow-2xl' >
+    <div className=' flex  pt-2  shadow-black drop-shadow-xl' >
 
 
       <ul className='flex gap-10 font-semibold justify-center pb-5  w-full bg-white text-black pt-10 px-10 text-2xl'>
