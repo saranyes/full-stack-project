@@ -1,11 +1,11 @@
-
-import MainContent from '../Components/MainContent'
+import Navbar from '../Components/Navbar'
+import MainContent from '../Components/Navbar'
 
 const CE = () => {
     return (
         <div>
 
-            <MainContent />
+            <Navbar />
             Currency Exchange
         </div>
     )

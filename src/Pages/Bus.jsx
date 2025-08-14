@@ -1,12 +1,13 @@
 import React from 'react'
 
-import MainContent from '../Components/MainContent'
+import MainContent from '../Components/Navbar'
+import Navbar from '../Components/Navbar'
 
 const Bus = () => {
     return (
         <div>
 
-            <MainContent />
+            <Navbar />
             bus
         </div>
     )

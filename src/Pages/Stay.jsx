@@ -1,12 +1,12 @@
 import React from 'react'
-
-import MainContent from '../Components/MainContent'
+import Navbar from '../Components/Navbar'
+import MainContent from '../Components/Navbar'
 
 const Stay = () => {
     return (
         <div>
 
-            <MainContent />
+            <Navbar />
             Stay
         </div>
     )

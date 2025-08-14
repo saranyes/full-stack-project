@@ -1,11 +1,11 @@
 import React from 'react'
-
-import MainContent from '../Components/MainContent'
+import Navbar from '../Components/Navbar'
+import MainContent from '../Components/Navbar'
 
 const Train = () => {
     return (
         <div>
-            <MainContent />
+            <Navbar />
             Train
         </div>
     )

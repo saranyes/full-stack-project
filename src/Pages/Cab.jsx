@@ -1,11 +1,11 @@
 import React from 'react'
-
-import MainContent from '../Components/MainContent'
+import Navbar from '../Components/Navbar'
+import MainContent from '../Components/Navbar'
 
 const Cab = () => {
     return (
         <div>
-            <MainContent />
+            <Navbar />
             Cab
         </div>
     )
