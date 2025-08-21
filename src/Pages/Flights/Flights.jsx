@@ -1,76 +1,119 @@
+import Navbar from "../../Components/Navbar";
+import { useState } from "react";
 
-import Navbar from "../../Components/Navbar"
-import { useState } from "react"
-import flightbg from "../../assets/flightbg.jpg";
 import Displayflights from "../../Components/Displayflights";
-
 
 const Flights = () => {
 
-    const [nowdate, setnowdate] = useState(false)
-    const togglenowdate = () => setnowdate(prev => !prev)
+    const today = new Date().toLocaleDateString("en-ca")
 
-    const [roundtrip, setroundtrip] = useState(false)
+    const [departuredate, setDeparturedate] = useState(today)
+    const [returndate, setReturndate] = useState(today)
+
+
+    const [roundtrip, setroundtrip] = useState(false);
     return (
         <div>
             <Navbar />
-            <div className="relative ">
-                <div>  <img src={flightbg} alt="bg" className="w-screen h-auto opacity-50" /></div>
-
-
-                <div className="absolute inset-0 flex flex-col items-center gap-10   ">
-                    <div>
-                        <ul className="flex gap-20 pt-10 ">
-                            <li>
+            <div className="flex flex-wrap justify-center">
+                <div className="flex flex-col items-center py-10 ">
+                    {/* Trip Type Selection */}
+                    <div className="bg-white shadow-lg rounded-2xl p-6 w-full max-w-4xl">
+                        <ul className="flex gap-10 justify-center border-b pb-4">
+                            <li className="flex items-center gap-2">
                                 <input
-                                    type="checkbox"
+                                    type="radio"
+                                    id="oneway"
+                                    name="tripType"
                                     checked={!roundtrip}
                                     onChange={() => setroundtrip(false)}
-                                /> One-Way
+                                    className="accent-blue-500"
+                                />
+                                <label className="cursor-pointer font-medium">
+                                    One-Way
+                                </label>
                             </li>
-                            <li>
+                            <li className="flex items-center gap-2">
                                 <input
-                                    type="checkbox"
+                                    type="radio"
+                                    id="roundtrip"
+                                    name="tripType"
                                     checked={roundtrip}
                                     onChange={() => setroundtrip(true)}
-                                /> Round-Trip
+                                    className="accent-blue-500"
+                                />
+                                <label
+                                    className="cursor-pointer font-medium">
+                                    Round-Trip
+                                </label>
                             </li>
                         </ul>
 
-                        <div className="flex flex-wrap  mt-4  bg-white  outline-1  rounded-xl font-semibold ">
-                            <div className="flex flex-col px-4  py-2  ">
-                                FROM
-                                <input type="searchbar " className="outline-2 outline-gray-300 rounded-xl px-2" />
-
+                        {/* Form Inputs */}
+                        <div className="sm:flex sm:gap-4  mt-6 ">
+                            <div className="flex flex-col justify-center ">
+                                <label className="text-sm text-gray-600 font-semibold">
+                                    FROM
+                                </label>
+                                <input
+                                    type="text"
+                                    placeholder="Enter departure city"
+                                    className="border rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-blue-400  md:w-50 "
+                                />
                             </div>
-                            <div className="flex flex-col px-4 wpt-2">
-                                TO
-                                <input type="searchbar  " className="outline-2 outline-gray-300 rounded-xl px-2" />
+
+                            <div className="flex flex-col justify-center">
+                                <label className="text-sm text-gray-600 font-semibold">
+                                    TO
+                                </label>
+                                <input
+                                    type="text"
+                                    placeholder="Enter destination city"
+                                    className="border rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-blue-400 md:w-50 "
+                                />
                             </div>
-                            <div className="flex flex-col px-4  py-2 cursor-pointer">
-                                <h1 className="cursor-pointer" onClick={togglenowdate} >DEPARTURE</h1>
 
-
-                                <input type="date" className="flex" />
-
+                            <div className="flex flex-col justify-center">
+                                <label className="text-sm text-gray-600 font-semibold">
+                                    DEPARTURE
+                                </label>
+                                <input
+                                    type="date"
+                                    value={departuredate}
+                                    onChange={(e) => setDeparturedate(e.target.value)}
+                                    className="border rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer md:w-50 "
+                                />
                             </div>
+
                             {roundtrip && (
-                                <div className="flex flex-col px-4   py-2">
-                                    RETURN
-                                    <input type="date" className="flex" />
+                                <div className="flex flex-col justify-center">
+                                    <label className="text-sm text-gray-600 font-semibold">
+                                        RETURN
+                                    </label>
+                                    <input
+                                        type="date"
+                                        value={returndate}
+                                        onChange={(e) => setReturndate(e.target.value)}
+                                        className="border rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer md:w-50 "
+                                    />
                                 </div>
                             )}
                         </div>
 
-                        <div className="flex justify-center"><button className="px-20 bg-blue-400 flex justify-center items-center py-2 rounded-xl cursor-pointer">Search</button></div>
+                        {/* Search Button */}
+                        <div className="flex justify-center mt-8">
+                            <button className="px-10 py-3 bg-blue-500 text-white font-semibold rounded-xl shadow-lg hover:bg-blue-600 transition">
+                                Search Flights
+                            </button>
+                        </div>
                     </div>
-                    <Displayflights />
-
                 </div>
             </div>
-        </div >
+            <div className="flex justify-center">
+                <Displayflights />
+            </div>
+        </div>
+    );
+};
 
-    )
-}
-
-export default Flights
+export default Flights;

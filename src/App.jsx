@@ -9,6 +9,7 @@ import Train from './Pages/Train.jsx'
 import Visa from './Pages/Visa.jsx'
 import Cab from './Pages/Cab.jsx'
 import CE from './Pages/CurrencyExchange.jsx'
+import User from './Pages/User.jsx';
 
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
       <Routes>
 
         <Route path="/" element={<Home />} />
+        <Route path="/user" element={<User />} />
         <Route path="/Flights" element={<Flights />} />
         <Route path="/Cab" element={<Cab />} />
         <Route path="/CE" element={<CE />} />
