@@ -9,9 +9,25 @@ const Flights = () => {
 
     const [departuredate, setDeparturedate] = useState(today)
     const [returndate, setReturndate] = useState(today)
-
-
+    const [from, setFrom] = useState("")
+    const [to, setTo] = useState("")
+    const [searchdata, setSearchdata] = useState("")
     const [roundtrip, setroundtrip] = useState(false);
+
+    const handlesearch = () => {
+        const playload = {
+            from,
+            to,
+            departuredate,
+            returndate,
+            roundtrip,
+        }
+
+        setSearchdata(playload)
+
+    }
+
+
     return (
         <div>
             <Navbar />
@@ -29,7 +45,7 @@ const Flights = () => {
                                     onChange={() => setroundtrip(false)}
                                     className="accent-blue-500"
                                 />
-                                <label className="cursor-pointer font-medium">
+                                <label htmlFor="oneway" className="cursor-pointer font-medium">
                                     One-Way
                                 </label>
                             </li>
@@ -42,8 +58,8 @@ const Flights = () => {
                                     onChange={() => setroundtrip(true)}
                                     className="accent-blue-500"
                                 />
-                                <label
-                                    className="cursor-pointer font-medium">
+                                <label htmlFor="roundtrip" className="cursor-pointer font-medium">
+
                                     Round-Trip
                                 </label>
                             </li>
@@ -58,8 +74,11 @@ const Flights = () => {
                                 <input
                                     type="text"
                                     placeholder="Enter departure city"
+                                    value={from}
                                     className="border rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-blue-400  md:w-50 "
+                                    onChange={(e) => setFrom(e.target.value)}
                                 />
+
                             </div>
 
                             <div className="flex flex-col justify-center">
@@ -68,8 +87,10 @@ const Flights = () => {
                                 </label>
                                 <input
                                     type="text"
+                                    value={to}
                                     placeholder="Enter destination city"
                                     className="border rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-blue-400 md:w-50 "
+                                    onChange={(e) => setTo(e.target.value)}
                                 />
                             </div>
 
@@ -82,6 +103,7 @@ const Flights = () => {
                                     value={departuredate}
                                     onChange={(e) => setDeparturedate(e.target.value)}
                                     className="border rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer md:w-50 "
+
                                 />
                             </div>
 
@@ -95,6 +117,7 @@ const Flights = () => {
                                         value={returndate}
                                         onChange={(e) => setReturndate(e.target.value)}
                                         className="border rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-blue-400 cursor-pointer md:w-50 "
+
                                     />
                                 </div>
                             )}
@@ -102,7 +125,7 @@ const Flights = () => {
 
                         {/* Search Button */}
                         <div className="flex justify-center mt-8">
-                            <button className="px-10 py-3 bg-blue-500 text-white font-semibold rounded-xl shadow-lg hover:bg-blue-600 transition">
+                            <button className="px-10 py-3 bg-blue-500 text-white font-semibold rounded-xl shadow-lg hover:bg-blue-600 transition" onClick={handlesearch}>
                                 Search Flights
                             </button>
                         </div>
@@ -110,7 +133,7 @@ const Flights = () => {
                 </div>
             </div>
             <div className="flex justify-center">
-                <Displayflights />
+                <Displayflights data={searchdata} />
             </div>
         </div>
     );
